@@ -22,6 +22,7 @@ const NewTask = ({ onFinish }: Props) => {
   const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     onFinish(inputText);
+    setInputText("");
   };
 
   return (
