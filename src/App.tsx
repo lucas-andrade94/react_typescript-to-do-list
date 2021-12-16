@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
-function App() {
+import * as Style from "./App.styles";
+import { Item } from "./types/Item";
+import ListItem from "./components/ItemList";
+import NewTask from "./components/NewTask";
+
+const App = () => {
+  const [list, setList] = useState<Item[]>([]);
+
+  const handleNewTask = (taskName: string) => {
+    let newList = [...list];
+    newList.push({
+      id: Math.random().toString(16),
+      name: taskName,
+      done: false,
+    });
+
+    setList(newList);
+  };
+
+  const handleRemoveItem = (id: string) => {
+    const newList = [...list];
+    const listFiltered = newList.filter((item) => item.id !== id);
+    setList(listFiltered);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Style.Container>
+      <Style.Content>
+        <Style.Header>To Do List</Style.Header>
+        <NewTask onFinish={handleNewTask} />
+        {list.map((item, index) => {
+          return (
+            <ListItem key={index} item={item} onRemove={handleRemoveItem} />
+          );
+        })}
+      </Style.Content>
+    </Style.Container>
   );
-}
+};
 
 export default App;
