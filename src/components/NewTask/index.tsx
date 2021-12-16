@@ -19,6 +19,11 @@ const NewTask = ({ onFinish }: Props) => {
     }
   };
 
+  const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    onFinish(inputText);
+  };
+
   return (
     <Container>
       <div className="image">+</div>
@@ -29,6 +34,7 @@ const NewTask = ({ onFinish }: Props) => {
         onChange={(event) => setInputText(event.target.value)}
         onKeyUp={handleKeyUp}
       />
+      <button onClick={buttonHandler}>Add</button>
     </Container>
   );
 };

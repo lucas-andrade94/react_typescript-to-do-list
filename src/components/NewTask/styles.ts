@@ -21,4 +21,12 @@ export const Container = styled.div`
     font-size: 1.25rem;
     flex: 1;
   }
+
+  button {
+    background: gray;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    color: black;
+  }
 `;
