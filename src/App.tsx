@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <Style.Container>
-      <Style.Content>
+      <Style.Content className="container">
         <Style.Header>To Do List</Style.Header>
         <NewTask onFinish={handleNewTask} />
         {list.map((item, index) => {

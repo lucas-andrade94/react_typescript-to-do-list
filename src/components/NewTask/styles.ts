@@ -13,13 +13,17 @@ export const Container = styled.div`
     font-size: 1.5rem;
   }
 
+  .input-container {
+    display: flex;
+  }
+
   input {
     border: 0px;
     background: transparent;
     outline: 0;
     color: #fff;
     font-size: 1.25rem;
-    flex: 1;
+    width: 100%;
   }
 
   button {
